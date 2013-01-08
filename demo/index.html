@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>Demo</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../lib/require.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl: "../src"
+		})
+	
+		require(['fsbox'], function(FsBox) {
+			
+			$(document).ready(function() {
+				
+				new FsBox()
+			})
+		})
+	</script>
+	<style>
+		.fsbox {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="thumb"><a href="#"><img alt="" src="img/thumb01.jpg"></a></div>
+	<div class="thumb"><a href="#"><img alt="" src="img/thumb02.jpg"></a></div>
+	<div class="thumb"><a href="#"><img alt="" src="img/thumb03.jpg"></a></div>
+	
+	<div class="fsbox">
+		<div class="close"><a href="#">&#x2715;</a></div>
+		<div class="prev"><a href="#">&larr;</a></div>
+		<div class="next"><a href="#">&rarr;</a></div>
+		<div class="slides">
+			<img alt="" src="#" data-src="img/pic01.jpg">
+			<img alt="" src="#" data-src="img/pic02.jpg">
+			<img alt="" src="#" data-src="img/pic03.jpg">
+		</div>
+	</div>
+	
+</body>
+</html>
