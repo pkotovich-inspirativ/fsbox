@@ -9,17 +9,51 @@
 			baseUrl: "../src"
 		})
 	
-		require(['fsbox'], function(FsBox) {
-			
-			$(document).ready(function() {
-				
-				new FsBox()
+		require(['fsbox'])
+		
+		$(document).ready(function() {
+			$('.thumb').click(function() {
+				$('.fsbox').show()
+				return false
 			})
 		})
 	</script>
 	<style>
 		.fsbox {
 			display: none;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 0.9);
+			font-size: 32px;
+		}
+		
+		.fsbox .container {
+			padding: 10px;
+		}
+		
+		.fsbox .control a {
+			text-decoration: none;
+		}
+		
+		.fsbox .control.close {
+			text-align: right;
+		}
+		
+		.fsbox .control.prev {
+			float: left;
+		}
+		
+		.fsbox .control.next {
+			float: right;
+		}
+		
+		.fsbox .slides {
+			margin: 0 40px;
+			background-image: url(img/spinner.gif);
+			background-position: center;
+			background-repeat: no-repeat;
 		}
 	</style>
 </head>
@@ -30,13 +64,17 @@
 	<div class="thumb"><a href="#"><img alt="" src="img/thumb03.jpg"></a></div>
 	
 	<div class="fsbox">
-		<div class="close"><a href="#">&#x2715;</a></div>
-		<div class="prev"><a href="#">&larr;</a></div>
-		<div class="next"><a href="#">&rarr;</a></div>
-		<div class="slides">
-			<img alt="" src="#" data-src="img/pic01.jpg">
-			<img alt="" src="#" data-src="img/pic02.jpg">
-			<img alt="" src="#" data-src="img/pic03.jpg">
+		<div class="container">
+			<div class="control close"><a href="#">&#x2715;</a></div>
+			<div class="slides-container">
+				<div class="control prev"><a href="#">&larr;</a></div>
+				<div class="control next"><a href="#">&rarr;</a></div>
+				<div class="slides">
+					<img alt="" src="data:image/gif," data-fsbox-src="img/pic01.jpg">
+					<img alt="" src="data:image/gif," data-fsbox-src="img/pic02.jpg">
+					<img alt="" src="data:image/gif," data-fsbox-src="img/pic03.jpg">
+				</div>
+			</div>
 		</div>
 	</div>
 	
