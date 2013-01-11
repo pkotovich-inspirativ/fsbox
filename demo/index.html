@@ -3,12 +3,20 @@
 <head>
 	<title>Demo</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="../src/fsbox.js"></script>
+	<script src="../lib/require.js"></script>
 	<script>
+	
+		requirejs.config({baseUrl: "../src"})
+
+		require(['fsbox'])	
+	
 		$(document).ready(function() {
-			$('.thumb').click(function() {
-				$('.fsbox').fsbox('open')
-				return false
+			$('.thumb').each(function(i) {
+				
+				$(this).click(function() {
+					$('.fsbox').fsbox('open', i)
+					return false
+				})
 			})
 		})
 	</script>
