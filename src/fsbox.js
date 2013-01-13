@@ -1,8 +1,9 @@
-define(['imgslide'], function(ImgSlide) {(function($) {
+define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 	
 	var createSlide = function($slide, box) {
 		
 		if ($slide.is('img')) return new ImgSlide($slide, box)
+		else if ($slide.is('div')) return new DivSlide($slide, box)
 		else return null
 	}
 	
