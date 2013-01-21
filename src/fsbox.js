@@ -81,6 +81,8 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 			
 			close: function() {
 				
+				$box.trigger('close.fsbox', [currentSlide])
+				
 				$box.fadeOut()
 				
 				$('body').css('overflow', bodyOverflow)
@@ -94,6 +96,8 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 					
 					var prevSlide = currentSlide.prevSlide
 					
+					$box.trigger('prev.fsbox', [currentSlide, prevSlide])
+					
 					currentSlide.hide(function() { prevSlide.show() })
 					
 					currentSlide = currentSlide.prevSlide
@@ -105,7 +109,9 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 				if (currentSlide.nextSlide) {
 					
 					var nextSlide = currentSlide.nextSlide
-
+					
+					$box.trigger('next.fsbox', [currentSlide, nextSlide])
+					
 					currentSlide.hide(function() { nextSlide.show() })
 					
 					currentSlide = currentSlide.nextSlide
