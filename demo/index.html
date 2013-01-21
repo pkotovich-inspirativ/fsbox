@@ -18,6 +18,19 @@
 					return false
 				})
 			})
+			
+			$('.fsbox')
+				.on('close.fsbox', function(e, slide) {
+					console.log('fsbox close triggered')	
+					console.log(slide)
+				})
+				.on('change.fsbox', function(e, current, next) {
+					console.log('fsbox change triggered')	
+					console.log('current slide:')
+					console.log(current)
+					console.log('next slide:')
+					console.log(next)
+				})
 		})
 	</script>
 	<style>
