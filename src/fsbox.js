@@ -97,7 +97,7 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 					var prevSlide = currentSlide.prevSlide
 					
 					$box.trigger('change.fsbox', [currentSlide, prevSlide])
-					
+
 					currentSlide.hide(function() { prevSlide.show() })
 					
 					currentSlide = currentSlide.prevSlide
@@ -109,7 +109,7 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 				if (currentSlide.nextSlide) {
 					
 					var nextSlide = currentSlide.nextSlide
-					
+
 					$box.trigger('change.fsbox', [currentSlide, nextSlide])
 					
 					currentSlide.hide(function() { nextSlide.show() })
