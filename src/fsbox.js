@@ -59,7 +59,7 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 			
 			return slide
 			
-		}).get().filter(function(el) { return el !== null })
+		}).get()
 		
 		$box.data('fsbox', { box: this })
 		
