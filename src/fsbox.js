@@ -75,6 +75,8 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 				$box.fadeIn()
 				
 				if (i !== undefined) currentSlide = slides[i]
+
+				$box.trigger('open.fsbox', [currentSlide])
 				
 				currentSlide.show()
 			},
