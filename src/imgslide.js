@@ -12,7 +12,11 @@ define(['slide'], function(Slide) {
 				
 				if (callback) $slide.load(callback)
 					
-				$slide.attr('src', $slide.data('fsboxSrc'))
+				var srcToLoad = $slide.data('fsboxSrc'), src = $slide.attr('src') 
+				
+				if (srcToLoad && src != srcToLoad)
+					$slide.attr('src', srcToLoad)
+				
 				this.loaded = true
 			}
 		})
