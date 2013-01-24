@@ -28,6 +28,8 @@ define([], function() {
 
 				if (self.prevSlide) self.prevSlide.load()
 				if (self.nextSlide) self.nextSlide.load()
+				
+				self.box.isSwitching = false
 			}
 			
 			if (this.loaded) this.$slide.fadeIn(callback)
@@ -41,7 +43,7 @@ define([], function() {
 			else this.box.$nextControl.hide()
 		},
 		
-		hide: function(callback) { this.$slide.fadeOut(400, callback) },
+		hide: function(callback) { this.$slide.fadeOut(callback) },
 		
 		center: function() {
 			

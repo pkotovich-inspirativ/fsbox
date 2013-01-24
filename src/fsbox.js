@@ -26,7 +26,7 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 		if (data && data.box) return data.box
 		
 		$box.detach()
-			.css({position: 'absolute'})
+			.css({position: 'fixed'})
 			.appendTo($('body'))
 			
 		var self = this
@@ -67,6 +67,7 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 
 			$prevControl: $box.find(params.prevControlSelector),
 			$nextControl: $box.find(params.nextControlSelector),
+			isSwitching: false,
 			
 			spinner: new Spinner($box.find(params.spinnerSelector)),
 			
@@ -96,8 +97,10 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 			},
 			
 			prev: function() {
-				
-				if (currentSlide.prevSlide) {
+
+				if (currentSlide.prevSlide && !self.isSwitching) {
+					
+					self.isSwitching = true;
 					
 					var prevSlide = currentSlide.prevSlide
 					
@@ -110,8 +113,10 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 			},
 			
 			next: function() {
-				
-				if (currentSlide.nextSlide) {
+
+				if (currentSlide.nextSlide && !self.isSwitching) {
+					
+					self.isSwitching = true;
 					
 					var nextSlide = currentSlide.nextSlide
 
