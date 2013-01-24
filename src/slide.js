@@ -7,6 +7,7 @@ define([], function() {
 		nextSlide: null,
 		prevSlide: null,
 		loaded: false,
+		isLoading: false,
 
 		setNextSlide: function(slide) {
 			
@@ -23,22 +24,21 @@ define([], function() {
 			
 			var self = this
 			
-			if (this.loaded) this.$slide.fadeIn()
-			else this.load(function() { self.$slide.fadeIn() })
+			var callback = function() {
+
+				if (self.prevSlide) self.prevSlide.load()
+				if (self.nextSlide) self.nextSlide.load()
+			}
 			
-			if (this.prevSlide) {
-				
-				this.prevSlide.load()
-				this.box.$prevControl.show()
-				
-			} else this.box.$prevControl.hide()
+			if (this.loaded) this.$slide.fadeIn(callback)
+			else if (this.isLoading) this.$slide.load(function() { self.$slide.fadeIn(callback) })
+			else this.load(function() { self.$slide.fadeIn(callback) })
 			
-			if (this.nextSlide) {
-				
-				this.nextSlide.load()
-				this.box.$nextControl.show()
-				
-			} else this.box.$nextControl.hide()
+			if (this.prevSlide) this.box.$prevControl.show()
+			else this.box.$prevControl.hide()
+			
+			if (this.nextSlide) this.box.$nextControl.show()
+			else this.box.$nextControl.hide()
 		},
 		
 		hide: function(callback) { this.$slide.fadeOut(400, callback) },

@@ -8,16 +8,25 @@ define(['slide'], function(Slide) {
 				
 				var self = this
 				
-				$slide.load(function() { self.center() })
-				
-				if (callback) $slide.load(callback)
-					
 				var srcToLoad = $slide.data('fsboxSrc'), src = $slide.attr('src') 
 				
-				if (srcToLoad && src != srcToLoad)
+				if (srcToLoad && src != srcToLoad) {
+					
+					box.spinner.show($slide.get()[0])
+					
+					$slide.load(function() {
+						
+						self.loaded = true
+						self.center()
+						box.spinner.hide(this)
+					})
+
+					if (callback) $slide.load(callback)
+
+					this.isLoading = true
+					
 					$slide.attr('src', srcToLoad)
-				
-				this.loaded = true
+				}
 			}
 		})
 		

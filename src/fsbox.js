@@ -1,4 +1,4 @@
-define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
+define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner) {(function($) {
 	
 	var createSlide = function($slide, box) {
 		
@@ -15,7 +15,8 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 			closeBindTo: '.close a',
 			prevBindTo: '.prev a',
 			nextBindTo: '.next a',
-			slidesSelector: '.slides > *'
+			slidesSelector: '.slides > *',
+			spinnerSelector: '.spinner'
 		}
 		
 		if (typeof opts == 'object') $.extend(params, opts)
@@ -28,9 +29,6 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 			.css({position: 'absolute'})
 			.appendTo($('body'))
 			
-		this.$prevControl = $box.find(params.prevControlSelector)
-		this.$nextControl = $box.find(params.nextControlSelector)
-		
 		var self = this
 		
 		$box.find(params.closeBindTo).click(function() { self.close(); return false })
@@ -66,6 +64,11 @@ define(['imgslide', 'divslide'], function(ImgSlide, DivSlide) {(function($) {
 		var bodyOverflow = null
 		
 		$.extend(this, {
+
+			$prevControl: $box.find(params.prevControlSelector),
+			$nextControl: $box.find(params.nextControlSelector),
+			
+			spinner: new Spinner($box.find(params.spinnerSelector)),
 			
 			open: function(i) {
 				

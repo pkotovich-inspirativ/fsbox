@@ -18,19 +18,6 @@
 					return false
 				})
 			})
-			
-			$('.fsbox')
-				.on('close.fsbox', function(e, slide) {
-					console.log('fsbox close triggered')	
-					console.log(slide)
-				})
-				.on('change.fsbox', function(e, current, next) {
-					console.log('fsbox change triggered')	
-					console.log('current slide:')
-					console.log(current)
-					console.log('next slide:')
-					console.log(next)
-				})
 		})
 	</script>
 	<style>
@@ -84,6 +71,18 @@
 		.fsbox .slides img:last-child {
 			cursor: default;
 		}
+		
+		.fsbox .spinner {
+			background-image: url(img/spinner.gif);
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 100%;
+			top: 0;
+			left: 50px;
+			right: 50px;
+			position: absolute;
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -98,6 +97,7 @@
 			<div class="slides-container">
 				<div class="control prev"><a href="#">&larr;</a></div>
 				<div class="control next"><a href="#">&rarr;</a></div>
+				<div class="spinner"><!--  --></div>
 				<div class="slides">
 					<img alt="" src="data:image/gif," data-fsbox-src="img/pic01.jpg">
 					<img alt="" src="data:image/gif," data-fsbox-src="img/pic02.jpg">
