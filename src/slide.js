@@ -20,6 +20,13 @@ define([], function() {
 		
 		setPrevSlide: function(slide) { this.prevSlide = slide },
 		
+		showExecutor: function($slide, callback) {
+			
+			$slide.css('opacity', 0)
+			$slide.show()
+			$slide.animate({opacity: 1}, callback)
+		},
+		
 		show: function() {
 			
 			var self = this
@@ -32,9 +39,10 @@ define([], function() {
 				self.box.isSwitching = false
 			}
 			
-			if (this.loaded) this.$slide.fadeIn(callback)
-			else if (this.isLoading) this.$slide.load(function() { self.$slide.fadeIn(callback) })
-			else this.load(function() { self.$slide.fadeIn(callback) })
+			if (this.loaded) this.showExecutor(this.$slide, callback)
+			else if (this.isLoading)
+				this.$slide.load(function() { self.showExecutor(self.$slide, callback) })
+			else this.load(function() { self.showExecutor(self.$slide, callback) })
 			
 			if (this.prevSlide) this.box.$prevControl.show()
 			else this.box.$prevControl.hide()
@@ -43,7 +51,17 @@ define([], function() {
 			else this.box.$nextControl.hide()
 		},
 		
-		hide: function(callback) { this.$slide.fadeOut(callback) },
+		hideExecutor: function($slide, callback) {
+
+			$slide.animate({opacity: 0}, function() {
+				
+				$(this).hide()
+				
+				if (callback) callback.apply(this)
+			})
+		},
+		
+		hide: function(callback) { this.hideExecutor(this.$slide, callback) },
 		
 		center: function() {
 			
