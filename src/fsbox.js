@@ -78,6 +78,8 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 				
 				$box.fadeIn()
 				
+				slides.forEach(function(slide) { slide.center() })				
+				
 				if (i !== undefined) currentSlide = slides[i]
 
 				$box.trigger('open.fsbox', [currentSlide])
