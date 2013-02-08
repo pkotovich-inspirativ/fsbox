@@ -15,11 +15,7 @@ define([], function() {
 			
 			this.nextSlide = slide
 
-			this.$slide.click(function(event) {
-				
-				event.stopImmediatePropagation()
-				self.box.next()
-			})
+			this.$slide.click(function() { self.box.next() })
 		},
 		
 		setPrevSlide: function(slide) { this.prevSlide = slide },

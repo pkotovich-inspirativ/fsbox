@@ -40,9 +40,9 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 		
 		var slides = $box.find(params.slidesSelector).map(function() {
 
-			var slide = createSlide($(this), self)
+			var $this = $(this); slide = createSlide($this, self)
 			
-			$(this).hide()
+			$this.hide()
 
 			if (prevSlide) {
 				
@@ -55,6 +55,8 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 			prevSlide = slide
 			
 			$(window).resize(function() { slide.center() })
+			
+			$this.click(function(e) { e.stopPropagation() })
 			
 			return slide
 			
