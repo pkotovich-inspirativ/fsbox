@@ -16,7 +16,8 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 			prevBindTo: '.prev a',
 			nextBindTo: '.next a',
 			slidesSelector: '.slides > *',
-			spinnerSelector: '.spinner'
+			spinnerSelector: '.spinner',
+			closeKeyCode: 27
 		}
 		
 		if (typeof opts == 'object') $.extend(params, opts)
@@ -58,6 +59,11 @@ define(['imgslide', 'divslide', 'spinner'], function(ImgSlide, DivSlide, Spinner
 			return slide
 			
 		}).get()
+		
+		$(document).keydown(function(e) {
+			
+			if (e.keyCode == params.closeKeyCode) self.close()
+		})
 		
 		$box.data('fsbox', { box: this })
 		
